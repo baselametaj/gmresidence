@@ -1,3 +1,16 @@
-const btn=document.getElementById('langBtn');let current='en';
-btn.addEventListener('click',()=>{current=current==='en'?'sq':'en';btn.textContent=current==='en'?'AL':'EN';document.querySelectorAll('[data-en]').forEach(el=>{el.textContent=el.dataset[current]});});
-document.querySelectorAll('.gallery img').forEach(img=>{img.addEventListener('click',()=>{const o=document.createElement('div');o.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px;cursor:pointer';const im=document.createElement('img');im.src=img.src;im.alt=img.alt;im.style.cssText='max-height:92vh;max-width:92vw;border-radius:18px;object-fit:contain';o.appendChild(im);o.onclick=()=>o.remove();document.body.appendChild(o);});});
+function sendWhatsApp(event){
+  event.preventDefault();
+  const checkin=document.getElementById('checkin').value;
+  const checkout=document.getElementById('checkout').value;
+  const guests=document.getElementById('guests').value;
+  const roomtype=document.getElementById('roomtype').value;
+  const message=document.getElementById('message').value || 'Hello, I would like to check availability.';
+  const text=`${message}\n\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nGuests: ${guests}\nStay type: ${roomtype}`;
+  window.open(`https://wa.me/355694638963?text=${encodeURIComponent(text)}`,'_blank');
+}
+const lightbox=document.getElementById('lightbox');
+const lightboxImg=document.getElementById('lightboxImg');
+document.querySelectorAll('.gallery img').forEach(img=>{
+  img.addEventListener('click',()=>{lightboxImg.src=img.src;lightbox.style.display='flex';});
+});
+function closeLightbox(){lightbox.style.display='none';}
