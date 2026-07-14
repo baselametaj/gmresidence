@@ -11,6 +11,9 @@ function sendWhatsApp(event){
 const lightbox=document.getElementById('lightbox');
 const lightboxImg=document.getElementById('lightboxImg');
 document.querySelectorAll('.gallery img').forEach(img=>{
-  img.addEventListener('click',()=>{lightboxImg.src=img.src;lightbox.style.display='flex';});
+  img.addEventListener('click',()=>{
+    lightboxImg.src=img.src;
+    lightbox.style.display='flex';
+  });
 });
 function closeLightbox(){lightbox.style.display='none';}
